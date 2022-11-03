@@ -7,9 +7,10 @@ const port = process.env.PORT || 5000;
 
 //api to get the root of the app.
 app.get("/", (req, res) => {
-  res
-    .status(200)
-    .send("Hello World by Kumar Sumit to railways from node-express app!");
+  res.status(200).json({
+    message: "Hello World by Kumar Sumit to railways from node-express app!",
+    date: format.asString("dd-MM-yyyy - hh:mm:ss", new Date()),
+  });
 });
 
 // api to get instragram data
@@ -18,7 +19,7 @@ app.get("/api/v1/instagram", (req, res) => {
     username: "sumit@kumar",
     followers: "100",
     follows: "10",
-    date: format.asString("dd - MM - hh:mm:ss", new Date()),
+    date: format.asString("dd-MM-yyyy - hh:mm:ss", new Date()),
   };
   res.status(200).json(instaSocial);
 });
@@ -28,7 +29,7 @@ app.get("/api/v1/facebook", (req, res) => {
     username: "kumar@sumit",
     followers: "1001",
     follows: "19",
-    date: format.asString("dd - MM - hh:mm:ss", new Date()),
+    date: format.asString("dd-MM-yyyy - hh:mm:ss", new Date()),
   };
   res.status(200).json(facebookSocial);
 });
@@ -39,7 +40,7 @@ app.get("/api/v1/linkedIn", (req, res) => {
     username: "kumar@sumit11",
     followers: "10011",
     follows: "191",
-    date: format.asString("dd - MM - hh:mm:ss", new Date()),
+    date: format.asString("dd-MM-yyyy - hh:mm:ss", new Date()),
   };
   res.status(200).json(linkedInSocial);
 });
@@ -51,7 +52,7 @@ app.get("/api/v1/:token", (req, res) => {
   console.log(req.params.token);
   res.status(200).json({
     urlParams: req.params.token,
-    date: format.asString("dd - MM - hh:mm:ss", new Date()),
+    date: format.asString("dd-MM-yyyy - hh:mm:ss", new Date()),
   });
 });
 
