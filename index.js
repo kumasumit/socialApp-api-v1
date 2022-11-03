@@ -1,5 +1,8 @@
 const express = require("express");
+const format = require("date-format");
 const app = express();
+//ask rahul >> why ??
+// 5000|| process.env.port was throwing an error in production mode
 const port = process.env.PORT || 5000;
 
 //api to get the root of the app.
@@ -15,7 +18,7 @@ app.get("/api/v1/instagram", (req, res) => {
     username: "sumit@kumar",
     followers: "100",
     follows: "10",
-    date: "",
+    date: format.asString("dd - MM - hh:mm:ss", new Date()),
   };
   res.status(200).json(instaSocial);
 });
@@ -25,7 +28,7 @@ app.get("/api/v1/facebook", (req, res) => {
     username: "kumar@sumit",
     followers: "1001",
     follows: "19",
-    date: "",
+    date: format.asString("dd - MM - hh:mm:ss", new Date()),
   };
   res.status(200).json(facebookSocial);
 });
@@ -36,7 +39,7 @@ app.get("/api/v1/linkedIn", (req, res) => {
     username: "kumar@sumit11",
     followers: "10011",
     follows: "191",
-    date: "",
+    date: format.asString("dd - MM - hh:mm:ss", new Date()),
   };
   res.status(200).json(linkedInSocial);
 });
@@ -46,7 +49,10 @@ app.get("/api/v1/linkedIn", (req, res) => {
 app.get("/api/v1/:token", (req, res) => {
   // anything that comes after token will come in req.params.token
   console.log(req.params.token);
-  res.status(200).json({ urlParams: req.params.token });
+  res.status(200).json({
+    urlParams: req.params.token,
+    date: format.asString("dd - MM - hh:mm:ss", new Date()),
+  });
 });
 
 app.listen(port, () => {
