@@ -1,9 +1,10 @@
 const express = require("express");
 const app = express();
-const port = 5000 || process.env.PORT;
+const port = process.env.PORT || 5000;
 
+//api to get the root of the app.
 app.get("/", (req, res) => {
-  res.status(200).send("Hello World!");
+  res.status(200).send("Hello World to railways from node-express app!");
 });
 
 // api to get instragram data
@@ -47,5 +48,5 @@ app.get("/api/v1/:token", (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+  console.log(`Social-Node-Express App listening on port ${port}`);
 });
