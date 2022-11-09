@@ -1,0 +1,104 @@
+openapi: 3.0.0
+info:
+  title: Social App
+  description: Our first basic Social App - Kumar Sumit.
+  version: 1.0.1
+
+servers:
+  - url: http://localhost:5000/api/v1/
+    description: localhost version of the API
+  - url: https://localhost:5000/api/v1/
+    description: this is a dummy production url, it does not work
+
+components:
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+    BearerAuth:
+      type: http
+      scheme: bearer
+paths:
+  /instagram:
+    get:
+      summary: returns the instagram username, followers, and follows and current date
+      responses:
+        "200": #status code
+          description: returns an object
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                username:
+                  type: string
+                follows:
+                  type: string
+                followers:
+                  type: string
+                date:
+                  type: Date
+
+  
+  /facebook:
+    get:
+      summary: returns the facebook username, followers, and follows and current date
+      responses:
+        "200": #status code
+          description: returns an object
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                username:
+                  type: string
+                follows:
+                  type: string
+                followers:
+                  type: string
+                date:
+                  type: Date
+
+  /linkedIn:
+    get:
+      summary: returns the linkedIn username, followers, and follows and current date
+      responses:
+        "200": #status code
+          description: returns an object
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                username:
+                  type: string
+                follows:
+                  type: string
+                followers:
+                  type: string
+                date:
+                  type: Date
+
+
+  /token:
+    get:
+      summary: returns whatever is there in the parameters
+      parameters:
+       -name: token
+        default: 5
+        in: path
+        schema: 
+         type: string
+      responses:
+        "200": #status code
+          description: returns an object
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  urlParams:
+                    type: string
+                  date:
+                    type: Date
